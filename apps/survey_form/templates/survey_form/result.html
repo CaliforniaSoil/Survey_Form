@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/CSS" href={% static 'surveyform/CSS/style.css' %}>
+    <meta charset="UTF-8">
+    <title>Survey Form</title>
+</head>
+<body>
+    <div id="wrapper">
+        <div>
+            Thanks for submitting this form! You have submitted this form {{request.session.tries}} now.
+        </div>
+        <div>
+            <h3>Submitted Information</h3>
+            <p>Name: {{request.session.name}}</p>
+            <p>Dojo Location: {{request.session.location}}</p>
+            <p>Favorite Language: {{request.session.language}}</p>
+            <p>Comment: {{request.session.comment}}</p>
+            <form action='/' method='POST'>
+                {% csrf_token %}
+                <input type=submit value="Go back">
+            </form>
+        </div>
+    </div>
+</body>
+</html>

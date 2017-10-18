@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/CSS" href={% static 'surveyform/CSS/style.css' %}>
+    <meta charset="UTF-8">
+    <title>Survey Form</title>
+</head>
+<body>
+    <div id="wrapper">
+        <div>
+            
+            <form action="/surveys/process" method="POST">
+                {% csrf_token %}
+                <div>
+                    <label for="name">First Name:</label>
+                    <input type="text" id="name" name="name">
+                </div>
+                <div>
+                    <p>Dojo Location:</p>
+                    <select name="location">
+                    <option value="mountianview">Mountian View</option>
+                    <option value="sanjose">San Jose</option>
+                    <option value="dallas">Dallas</option>
+                    </select>
+                </div>
+                <div>
+                    <p>Favorite language:</p>
+                    <select name="language">
+                    <option value="python">Python</option>
+                    <option value="javascript">JavaScript</option>
+                    <option value="ios">iOS</option>
+                    </select>
+                </div>
+                <div>
+                    <p>Comments:</p>
+                    <textarea name="comments"></textarea>
+
+                </div>
+
+                <input type='submit' value='Submit'>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
